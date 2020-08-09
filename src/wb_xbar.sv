@@ -205,7 +205,7 @@ begin
     ms_adr_o = 'b0;
     slave_arbiter = 'b0;
     for(int i = 0; i < N_SLAVE; i = i + 1) begin
-        if((ms_adr >= SSTART_ADDR[i]) && (ms_adr <= SEND_ADDR[i])) begin
+        if((ms_adr >= SSTART_ADDR[i]) && (ms_adr < SEND_ADDR[i])) begin
             slave_arbiter = 'b0 | (1 << i);
             // Address out is set off by startaddress of the selected slave
             ms_adr_o = ms_adr - SSTART_ADDR[i];
